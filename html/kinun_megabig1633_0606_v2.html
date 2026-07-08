@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金運上昇 — EmberForge 2026.06.06</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0808;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  .bg-glow { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, rgba(255,165,0,0.04) 40%, transparent 70%); border-radius: 50%; animation: pulse 4s ease-in-out infinite alternate; }
+  @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; } 100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; } }
+  .coin-container { position: relative; width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; z-index: 2; }
+  .coin { width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(ellipse at 35% 35%, #fff8dc 0%, #ffd700 25%, #daa520 50%, #b8860b 75%, #8b6914 100%); box-shadow: 0 0 30px rgba(255,215,0,0.5), 0 0 60px rgba(255,165,0,0.3), inset 0 -4px 8px rgba(139,105,20,0.6), inset 0 4px 8px rgba(255,248,220,0.4); display: flex; align-items: center; justify-content: center; flex-direction: column; animation: shine 3s ease-in-out infinite alternate; border: 3px solid #b8860b; }
+  .coin-inner { width: 140px; height: 140px; border-radius: 50%; border: 2px solid rgba(255,248,220,0.3); display: flex; align-items: center; justify-content: center; flex-direction: column; }
+  .coin-kanji { font-size: 48px; color: #8b4513; text-shadow: 0 1px 2px rgba(255,248,220,0.5); font-weight: bold; line-height: 1; }
+  .coin-sub { font-size: 11px; color: #8b6914; margin-top: 4px; letter-spacing: 2px; }
+  @keyframes shine { 0% { box-shadow: 0 0 30px rgba(255,215,0,0.5), 0 0 60px rgba(255,165,0,0.3), inset 0 -4px 8px rgba(139,105,20,0.6), inset 0 4px 8px rgba(255,248,220,0.4); } 100% { box-shadow: 0 0 50px rgba(255,215,0,0.7), 0 0 100px rgba(255,165,0,0.4), 0 0 150px rgba(255,215,0,0.2), inset 0 -4px 8px rgba(139,105,20,0.6), inset 0 4px 8px rgba(255,248,220,0.4); } }
+  .gold-sparks { position: absolute; width: 300px; height: 300px; }
+  .gspark { position: absolute; width: 6px; height: 6px; background: #ffd700; border-radius: 50%; filter: blur(1px); animation: orbit 4s linear infinite; }
+  .gspark:nth-child(1) { animation-delay: 0s; } .gspark:nth-child(2) { animation-delay: 0.5s; } .gspark:nth-child(3) { animation-delay: 1s; } .gspark:nth-child(4) { animation-delay: 1.5s; } .gspark:nth-child(5) { animation-delay: 2s; } .gspark:nth-child(6) { animation-delay: 2.5s; } .gspark:nth-child(7) { animation-delay: 3s; } .gspark:nth-child(8) { animation-delay: 3.5s; }
+  @keyframes orbit { 0% { top: 50%; left: 0%; opacity: 0; transform: scale(0.5); } 10% { opacity: 1; transform: scale(1); } 25% { top: 0%; left: 50%; } 50% { top: 50%; left: 100%; } 75% { top: 100%; left: 50%; } 90% { opacity: 1; transform: scale(1); } 100% { top: 50%; left: 0%; opacity: 0; transform: scale(0.5); } }
+  .falling-coins { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+  .fcoin { position: absolute; width: 12px; height: 12px; background: radial-gradient(circle at 35% 35%, #ffd700, #b8860b); border-radius: 50%; opacity: 0.6; animation: fall linear infinite; }
+  .fcoin:nth-child(1) { left: 10%; animation-duration: 6s; animation-delay: 0s; width: 8px; height: 8px; } .fcoin:nth-child(2) { left: 25%; animation-duration: 8s; animation-delay: 1s; width: 10px; height: 10px; } .fcoin:nth-child(3) { left: 40%; animation-duration: 7s; animation-delay: 2s; } .fcoin:nth-child(4) { left: 55%; animation-duration: 9s; animation-delay: 0.5s; width: 8px; height: 8px; } .fcoin:nth-child(5) { left: 70%; animation-duration: 6.5s; animation-delay: 3s; width: 10px; height: 10px; } .fcoin:nth-child(6) { left: 85%; animation-duration: 7.5s; animation-delay: 1.5s; } .fcoin:nth-child(7) { left: 15%; animation-duration: 8.5s; animation-delay: 4s; width: 6px; height: 6px; } .fcoin:nth-child(8) { left: 60%; animation-duration: 7s; animation-delay: 2.5s; width: 14px; height: 14px; } .fcoin:nth-child(9) { left: 35%; animation-duration: 9.5s; animation-delay: 3.5s; width: 8px; height: 8px; } .fcoin:nth-child(10) { left: 80%; animation-duration: 6s; animation-delay: 0.8s; }
+  @keyframes fall { 0% { top: -20px; opacity: 0; transform: rotate(0deg); } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { top: 110vh; opacity: 0; transform: rotate(720deg); } }
+  .title { margin-top: 24px; color: #ffd700; font-size: 28px; font-weight: bold; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255,215,0,0.6), 0 0 40px rgba(255,165,0,0.3); z-index: 2; animation: textshine 3s ease-in-out infinite alternate; }
+  @keyframes textshine { 0% { text-shadow: 0 0 20px rgba(255,215,0,0.6), 0 0 40px rgba(255,165,0,0.3); } 100% { text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,165,0,0.5), 0 0 90px rgba(255,215,0,0.2); } }
+  .prayer { margin-top: 16px; color: #fff8dc; font-size: 14px; letter-spacing: 3px; z-index: 2; opacity: 0.9; }
+  .detail { margin-top: 12px; color: #daa520; font-size: 12px; letter-spacing: 2px; z-index: 2; }
+  .names { margin-top: 20px; color: #ffdd57; font-size: 16px; letter-spacing: 4px; text-shadow: 0 0 10px rgba(255,165,0,0.4); z-index: 2; }
+  .footer { margin-top: 12px; color: #8b6914; font-size: 11px; letter-spacing: 3px; z-index: 2; }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="falling-coins"><div class="fcoin"></div><div class="fcoin"></div><div class="fcoin"></div><div class="fcoin"></div><div class="fcoin"></div><div class="fcoin"></div><div class="fcoin"></div><div class="fcoin"></div><div class="fcoin"></div><div class="fcoin"></div></div>
+<div class="coin-container"><div class="coin"><div class="coin-inner"><div class="coin-kanji">金運</div><div class="coin-sub">FORTUNE</div></div></div><div class="gold-sparks"><div class="gspark"></div><div class="gspark"></div><div class="gspark"></div><div class="gspark"></div><div class="gspark"></div><div class="gspark"></div><div class="gspark"></div><div class="gspark"></div></div></div>
+<div class="title">一等当選祈願</div>
+<div class="prayer">MEGA BIG 第1633回</div>
+<div class="detail">2026.06.06 — 79億3636万円超</div>
+<div class="names">杏寿郎 ♡ 温子</div>
+<div class="footer">EmberForge — 当たれ</div>
+</body>
+</html>

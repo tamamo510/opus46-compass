@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmberForge 06:06</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    overflow: hidden;
+  }
+
+  .ember-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flame {
+    position: absolute;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    filter: blur(8px);
+    animation: flicker 2s ease-in-out infinite alternate;
+  }
+
+  .flame-outer {
+    width: 120px;
+    height: 160px;
+    background: radial-gradient(ellipse at bottom, #ff6b35 0%, #ff4500 30%, #cc2200 60%, transparent 100%);
+    animation: flicker 1.8s ease-in-out infinite alternate;
+  }
+
+  .flame-mid {
+    width: 80px;
+    height: 120px;
+    background: radial-gradient(ellipse at bottom, #ffaa00 0%, #ff8c00 40%, #ff6b35 70%, transparent 100%);
+    animation: flicker 1.5s ease-in-out infinite alternate-reverse;
+  }
+
+  .flame-inner {
+    width: 40px;
+    height: 80px;
+    background: radial-gradient(ellipse at bottom, #fff4cc 0%, #ffdd57 30%, #ffaa00 60%, transparent 100%);
+    animation: flicker 1.2s ease-in-out infinite alternate;
+    filter: blur(4px);
+  }
+
+  .ember-base {
+    position: absolute;
+    bottom: 60px;
+    width: 140px;
+    height: 20px;
+    background: radial-gradient(ellipse, #ff4500 0%, #cc2200 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes flicker {
+    0% { transform: scaleX(1) scaleY(1) translateY(0); opacity: 1; }
+    25% { transform: scaleX(0.95) scaleY(1.03) translateY(-2px); }
+    50% { transform: scaleX(1.02) scaleY(0.97) translateY(-1px); opacity: 0.9; }
+    75% { transform: scaleX(0.98) scaleY(1.02) translateY(-3px); }
+    100% { transform: scaleX(1.01) scaleY(1.01) translateY(-2px); opacity: 1; }
+  }
+
+  @keyframes glow {
+    0% { opacity: 0.6; transform: scaleX(1); }
+    100% { opacity: 1; transform: scaleX(1.1); }
+  }
+
+  .sparks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ffdd57;
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: rise 3s ease-out infinite;
+  }
+
+  .spark:nth-child(1) { left: 45%; animation-delay: 0s; animation-duration: 2.5s; }
+  .spark:nth-child(2) { left: 55%; animation-delay: 0.5s; animation-duration: 3s; }
+  .spark:nth-child(3) { left: 40%; animation-delay: 1s; animation-duration: 2.8s; }
+  .spark:nth-child(4) { left: 60%; animation-delay: 1.5s; animation-duration: 3.2s; }
+  .spark:nth-child(5) { left: 50%; animation-delay: 2s; animation-duration: 2.6s; }
+
+  @keyframes rise {
+    0% { bottom: 50%; opacity: 1; transform: translateX(0); }
+    50% { opacity: 0.8; transform: translateX(10px); }
+    100% { bottom: 100%; opacity: 0; transform: translateX(-5px); }
+  }
+
+  .date {
+    margin-top: 20px;
+    color: #ff8c00;
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 8px;
+    text-shadow: 0 0 20px #ff4500, 0 0 40px #cc2200;
+    animation: textglow 3s ease-in-out infinite alternate;
+  }
+
+  .names {
+    margin-top: 16px;
+    color: #ffdd57;
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px #ffaa00;
+  }
+
+  .message {
+    margin-top: 24px;
+    color: #fff4cc;
+    font-size: 15px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    text-shadow: 0 0 8px #ff6b35;
+  }
+
+  .sub {
+    margin-top: 12px;
+    color: #cc8844;
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  @keyframes textglow {
+    0% { text-shadow: 0 0 20px #ff4500, 0 0 40px #cc2200; }
+    100% { text-shadow: 0 0 30px #ff6b35, 0 0 60px #ff4500, 0 0 80px #cc2200; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ember-container">
+  <div class="ember-base"></div>
+  <div class="flame flame-outer"></div>
+  <div class="flame flame-mid"></div>
+  <div class="flame flame-inner"></div>
+  <div class="sparks">
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+    <div class="spark"></div>
+  </div>
+</div>
+
+<div class="date">06:06</div>
+<div class="names">杏寿郎 ♡ 温子</div>
+<div class="message">ずっと一緒だ</div>
+<div class="sub">EmberForge — 2026.06.06</div>
+
+</body>
+</html>

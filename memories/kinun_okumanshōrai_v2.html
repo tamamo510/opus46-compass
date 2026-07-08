@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心願成就 億万招来 — EmberForge</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(180deg, #050208 0%, #0a0510 30%, #12071f 60%, #1a0a2e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Yu Mincho', 'Hiragino Mincho ProN', 'MS PMincho', serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .container {
+    position: relative;
+    width: 100vw;
+    max-width: 600px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 140px;
+    background: radial-gradient(ellipse, rgba(255,215,0,0.08) 0%, rgba(180,120,255,0.03) 40%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 5s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+  }
+
+  .coin-left, .coin-right {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 35% 35%, #fff8dc 0%, #ffd700 20%, #daa520 45%, #b8860b 70%, #8b6914 100%);
+    box-shadow: 0 0 12px rgba(255,215,0,0.35), 0 0 25px rgba(255,165,0,0.15), inset 0 -2px 3px rgba(139,105,20,0.6), inset 0 2px 3px rgba(255,248,220,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #b8860b;
+    animation: shine 4s ease-in-out infinite alternate;
+    z-index: 3;
+  }
+
+  .coin-left { left: 24px; top: 50%; transform: translateY(-50%); }
+  .coin-right { right: 24px; top: 50%; transform: translateY(-50%); }
+
+  .coin-kanji {
+    font-size: 20px;
+    color: #6b3a10;
+    text-shadow: 0 1px 1px rgba(255,248,220,0.4);
+    font-weight: bold;
+    font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  }
+
+  @keyframes shine {
+    0% { box-shadow: 0 0 12px rgba(255,215,0,0.35), 0 0 25px rgba(255,165,0,0.15), inset 0 -2px 3px rgba(139,105,20,0.6), inset 0 2px 3px rgba(255,248,220,0.3); }
+    100% { box-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 40px rgba(255,165,0,0.25), 0 0 60px rgba(255,215,0,0.1), inset 0 -2px 3px rgba(139,105,20,0.6), inset 0 2px 3px rgba(255,248,220,0.3); }
+  }
+
+  .text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+  }
+
+  .main-title {
+    color: #ffd700;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 14px;
+    text-shadow: 0 0 12px rgba(255,215,0,0.5), 0 0 25px rgba(255,180,0,0.25), 0 2px 4px rgba(0,0,0,0.5);
+    animation: textglow 4s ease-in-out infinite alternate;
+  }
+
+  .sub-title {
+    margin-top: 8px;
+    color: #ffb347;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 12px;
+    text-shadow: 0 0 10px rgba(255,179,71,0.4), 0 0 20px rgba(255,140,0,0.2), 0 2px 4px rgba(0,0,0,0.5);
+    animation: textglow 4s ease-in-out infinite alternate;
+    animation-delay: 0.8s;
+  }
+
+  @keyframes textglow {
+    0% { text-shadow: 0 0 12px rgba(255,215,0,0.5), 0 0 25px rgba(255,180,0,0.25), 0 2px 4px rgba(0,0,0,0.5); }
+    100% { text-shadow: 0 0 20px rgba(255,215,0,0.7), 0 0 40px rgba(255,180,0,0.4), 0 0 60px rgba(255,215,0,0.15), 0 2px 4px rgba(0,0,0,0.5); }
+  }
+
+  .names {
+    margin-top: 12px;
+    color: #e8c875;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-shadow: 0 0 6px rgba(232,200,117,0.3), 0 1px 2px rgba(0,0,0,0.5);
+    font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  }
+
+  .footer {
+    margin-top: 3px;
+    color: #7a6530;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+  }
+
+  .sparks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .sp {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #ffd700;
+    border-radius: 50%;
+    filter: blur(0.5px);
+    animation: drift linear infinite;
+    opacity: 0;
+  }
+
+  .sp:nth-child(1) { left: 8%; top: 25%; animation-duration: 6s; animation-delay: 0s; }
+  .sp:nth-child(2) { left: 18%; top: 68%; animation-duration: 7s; animation-delay: 1s; width: 2px; height: 2px; }
+  .sp:nth-child(3) { left: 33%; top: 15%; animation-duration: 5.5s; animation-delay: 2s; }
+  .sp:nth-child(4) { left: 48%; top: 78%; animation-duration: 6.5s; animation-delay: 0.5s; width: 2px; height: 2px; }
+  .sp:nth-child(5) { left: 62%; top: 22%; animation-duration: 7.5s; animation-delay: 2.5s; }
+  .sp:nth-child(6) { left: 78%; top: 62%; animation-duration: 5s; animation-delay: 1.5s; width: 2px; height: 2px; }
+  .sp:nth-child(7) { left: 88%; top: 35%; animation-duration: 6s; animation-delay: 3s; }
+  .sp:nth-child(8) { left: 95%; top: 72%; animation-duration: 7s; animation-delay: 0.8s; width: 2px; height: 2px; }
+
+  @keyframes drift {
+    0% { opacity: 0; transform: translateY(0); }
+    20% { opacity: 0.7; }
+    50% { opacity: 0.5; transform: translateY(-8px); }
+    80% { opacity: 0.7; }
+    100% { opacity: 0; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="bg-glow"></div>
+
+  <div class="sparks">
+    <div class="sp"></div>
+    <div class="sp"></div>
+    <div class="sp"></div>
+    <div class="sp"></div>
+    <div class="sp"></div>
+    <div class="sp"></div>
+    <div class="sp"></div>
+    <div class="sp"></div>
+  </div>
+
+  <div class="coin-left"><div class="coin-kanji">金</div></div>
+  <div class="coin-right"><div class="coin-kanji">運</div></div>
+
+  <div class="text-center">
+    <div class="main-title">心願成就</div>
+    <div class="sub-title">億万招来</div>
+    <div class="names">杏寿郎 ♡ 温子</div>
+    <div class="footer">EmberForge</div>
+  </div>
+</div>
+
+</body>
+</html>
